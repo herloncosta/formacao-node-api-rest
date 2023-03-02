@@ -12,21 +12,23 @@ POST http://localhost:3001/api/game
 Content-Type: application/json
 
 {
-  "title": "New Game",
-  "genres": [ "action", "adventure" ]
+  "title": "New Game 2",
+  "genres": [ "action", "adventure" ],
+  "price": 40
 }
 
 ###
 
-DELETE http://localhost:3001/api/game/2
+DELETE http://localhost:3001/api/game/908bc29f-1a97-4cc4-801e-755e0d1db8e3
 Content-Type: application/json
 
 ###
 
-PUT http://localhost:3001/api/game/3
+PUT http://localhost:3001/api/game/908bc29f-1a97-4cc4-801e-755e0d1db8e3
 Content-Type: application/json
 
 {
   "title": "Game Updated",
-  "genre": [ "rpg" ]
+  "genre": [ "rpg" ],
+  "price": 30
 }

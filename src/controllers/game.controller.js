@@ -18,10 +18,10 @@ const getById = (req, res) => {
 
 const create = (req, res) => {
   const id = randomUUID()
-  const { title, genres } = req.body
+  const { title, genres, price } = req.body
 
-  if (title && genres) {
-    const game = { id, title, genres }
+  if (title && genres && price) {
+    const game = { id, title, genres, price }
     fakeDB.games.push(game)
     res.status(201).json({ message: 'Game created with success!' })
     return
@@ -33,7 +33,7 @@ const create = (req, res) => {
 }
 
 const remove = (req, res) => {
-  const id = parseInt(req.params.id)
+  const id = String(req.params.id)
   const index = fakeDB.games.findIndex((game) => game.id === id)
 
   if (index === -1) {
@@ -46,8 +46,8 @@ const remove = (req, res) => {
 }
 
 const update = (req, res) => {
-  const id = parseInt(req.params.id)
-  const { title, genre } = req.body
+  const id = String(req.params.id)
+  const { title, genre, price } = req.body
   const index = fakeDB.games.findIndex((game) => game.id === id)
 
   if (index === -1) {
@@ -55,9 +55,9 @@ const update = (req, res) => {
     return
   }
 
-  if (title && genre) {
+  if (title && genre && price) {
     const game = fakeDB.games.find((game) => game.id === id)
-    const updated = { id: game.id, title, genre }
+    const updated = { id: game.id, title, genre, price }
     fakeDB.games.splice(index, 1, updated)
     res.status(201).json({ message: 'Game updated with success.' })
     return
