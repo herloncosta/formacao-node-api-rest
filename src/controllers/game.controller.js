@@ -5,7 +5,7 @@ import { fakeDB } from '../database/fakeDB.js'
 const getAll = (req, res) => res.status(200).json(fakeDB)
 
 const getById = (req, res) => {
-  const id = parseInt(req.params.id)
+  const id = String(req.params.id)
   const game = fakeDB.games.find((game) => game.id === id)
 
   if (game) {

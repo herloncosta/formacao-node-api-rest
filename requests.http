@@ -3,7 +3,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3001/api/game/2
+GET http://localhost:3001/api/game/fa07c93b-0af4-4b84-852f-0bc723235d42
 Content-Type: application/json
 
 ###
@@ -19,12 +19,12 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3001/api/game/908bc29f-1a97-4cc4-801e-755e0d1db8e3
+DELETE http://localhost:3001/api/game/2
 Content-Type: application/json
 
 ###
 
-PUT http://localhost:3001/api/game/908bc29f-1a97-4cc4-801e-755e0d1db8e3
+PUT http://localhost:3001/api/game/2
 Content-Type: application/json
 
 {
