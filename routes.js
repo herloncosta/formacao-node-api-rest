@@ -5,8 +5,8 @@ import {
   create,
   remove,
   update,
-  auth,
 } from './src/controllers/game.controller.js'
+import { auth } from './src/controllers/auth.controller.js'
 
 export const router = Router()
 
