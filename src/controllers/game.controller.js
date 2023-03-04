@@ -69,6 +69,11 @@ const update = (req, res) => {
 const auth = (req, res) => {
   const { email, password } = req.body
 
+  if (!email || !password) {
+    res.status(400).json({ message: 'E-mail e/ou senha inválidos!' })
+    return
+  }
+
   const user = fakeDB.users.find((user) => user.email === email)
 
   if (!user) {
