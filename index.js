@@ -1,6 +1,9 @@
 import express, { json, urlencoded } from 'express'
 import cors from 'cors'
+import * as dotenv from 'dotenv'
 import { router } from './routes.js'
+
+dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3001

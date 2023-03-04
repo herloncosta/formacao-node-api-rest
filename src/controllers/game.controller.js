@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto'
+import jwt from 'jsonwebtoken'
 
 import { fakeDB } from '../database/fakeDB.js'
 
@@ -82,11 +83,20 @@ const auth = (req, res) => {
   }
 
   if (user.password === password) {
-    res.status(200).json({ token: 'webtoken' })
+    const payload = { id: user.id, email: user.email }
+    const secret = process.env.JWTSECRET
+    const timeToTokenExpires = { expiresIn: '48h' }
+    const generateToken = (error, token) => {
+      error
+        ? res.status(500).json({ message: error })
+        : res.status(200).json(token)
+    }
+
+    jwt.sign(payload, secret, timeToTokenExpires, generateToken)
     return
   }
 
-  res.status(401).json({ error: 'unauthorized' })
+  res.status(401).json({ message: 'Usuário não autorizado.' })
 }
 
 export { getAll, getById, create, remove, update, auth }
