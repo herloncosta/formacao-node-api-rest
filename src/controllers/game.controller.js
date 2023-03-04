@@ -66,4 +66,22 @@ const update = (req, res) => {
   res.status(401).json({ message: 'title and genres are mandatory parameter!' })
 }
 
-export { getAll, getById, create, remove, update }
+const auth = (req, res) => {
+  const { email, password } = req.body
+
+  const user = fakeDB.users.find((user) => user.email === email)
+
+  if (!user) {
+    res.status(400).json({ message: 'E-mail inválido!' })
+    return
+  }
+
+  if (user.password === password) {
+    res.status(200).json({ token: 'webtoken' })
+    return
+  }
+
+  res.status(403).json({ error: 'unauthorized' })
+}
+
+export { getAll, getById, create, remove, update, auth }

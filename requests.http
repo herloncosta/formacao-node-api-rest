@@ -32,3 +32,13 @@ Content-Type: application/json
   "genre": [ "rpg" ],
   "price": 30
 }
+
+###
+
+POST http://localhost:3001/api/auth
+Content-Type: application/json
+
+{
+  "email": "herlon@mail.com",
+  "password": "herlon"
+}

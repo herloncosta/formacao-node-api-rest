@@ -19,4 +19,12 @@ export const fakeDB = {
       price: 70,
     },
   ],
+  users: [
+    {
+      id: '1',
+      email: 'herlon@mail.com',
+      name: 'herlon',
+      password: 'herlon',
+    },
+  ],
 }
