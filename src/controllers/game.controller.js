@@ -72,7 +72,7 @@ const auth = (req, res) => {
   const user = fakeDB.users.find((user) => user.email === email)
 
   if (!user) {
-    res.status(400).json({ message: 'E-mail inválido!' })
+    res.status(404).json({ message: 'Usuário não encontrado!' })
     return
   }
 
@@ -81,7 +81,7 @@ const auth = (req, res) => {
     return
   }
 
-  res.status(403).json({ error: 'unauthorized' })
+  res.status(401).json({ error: 'unauthorized' })
 }
 
 export { getAll, getById, create, remove, update, auth }
