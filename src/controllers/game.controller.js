@@ -18,10 +18,10 @@ const getById = (req, res) => {
 
 const create = (req, res) => {
   const id = randomUUID()
-  const { title, genres, price } = req.body
+  const { image, title, genres, price } = req.body
 
-  if (title && genres && price) {
-    const game = { id, title, genres, price }
+  if (image && title && genres && price) {
+    const game = { id, image, title, genres, price }
     fakeDB.games.push(game)
     res.status(201).json({ message: 'Game created with success!' })
     return
@@ -47,7 +47,7 @@ const remove = (req, res) => {
 
 const update = (req, res) => {
   const id = String(req.params.id)
-  const { title, genre, price } = req.body
+  const { image, title, genres, price } = req.body
   const index = fakeDB.games.findIndex((game) => game.id === id)
 
   if (index === -1) {
@@ -55,15 +55,15 @@ const update = (req, res) => {
     return
   }
 
-  if (title && genre && price) {
+  if (image && title && genres && price) {
     const game = fakeDB.games.find((game) => game.id === id)
-    const updated = { id: game.id, title, genre, price }
+    const updated = { id: game.id, image, title, genres, price }
     fakeDB.games.splice(index, 1, updated)
     res.status(201).json({ message: 'Game updated with success.' })
     return
   }
 
-  res.status(401).json({ message: 'title and genres are mandatory parameter!' })
+  res.status(403).json({ message: 'image, title and genres are mandatory parameter!' })
 }
 
 export { getAll, getById, create, remove, update }

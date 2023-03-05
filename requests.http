@@ -12,6 +12,7 @@ POST http://localhost:3000/api/game
 Content-Type: application/json
 
 {
+  "image": "url-da-imagem",
   "title": "New Game 2",
   "genres": [ "action", "adventure" ],
   "price": 40
@@ -19,7 +20,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/game/2
+DELETE http://localhost:3000/api/game/1
 Content-Type: application/json
 
 ###
@@ -28,6 +29,7 @@ PUT http://localhost:3000/api/game/2
 Content-Type: application/json
 
 {
+  "image": "url-novo",
   "title": "Game Updated",
   "genre": [ "rpg" ],
   "price": 30
