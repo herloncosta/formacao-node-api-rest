@@ -23,7 +23,7 @@ export const auth = (req, res) => {
     const generateToken = (error, token) => {
       error
         ? res.status(500).json({ message: error })
-        : res.status(200).json(token)
+        : res.status(200).json({ message: 'Authenticated', token })
     }
 
     jwt.sign(payload, secret, timeToTokenExpires, generateToken)

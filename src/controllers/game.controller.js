@@ -63,7 +63,10 @@ const update = (req, res) => {
     return
   }
 
-  res.status(403).json({ message: 'image, title and genres are mandatory parameter!' })
+  res
+    .status(403)
+    .json({ message: 'image, title and genres are mandatory parameter!' })
 }
 
 export { getAll, getById, create, remove, update }
+

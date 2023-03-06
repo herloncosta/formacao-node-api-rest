@@ -6,13 +6,14 @@ import {
   remove,
   update,
 } from './src/controllers/game.controller.js'
-import { auth } from './src/controllers/auth.controller.js'
+import { auth as authController } from './src/controllers/auth.controller.js'
+import { auth as authMiddleware } from './src/middlewares/auth.middleware.js'
 
 export const router = Router()
 
-router.get('/api/games', getAll)
-router.get('/api/game/:id', getById)
-router.post('/api/game', create)
-router.delete('/api/game/:id', remove)
-router.put('/api/game/:id', update)
-router.post('/api/auth', auth)
+router.get('/api/games', authMiddleware, getAll)
+router.get('/api/game/:id', authMiddleware, getById)
+router.post('/api/game', authMiddleware, create)
+router.delete('/api/game/:id', authMiddleware, remove)
+router.put('/api/game/:id', authMiddleware, update)
+router.post('/api/auth', authController)
