@@ -2,7 +2,8 @@ import { randomUUID } from 'node:crypto'
 
 import { fakeDB } from '../database/fakeDB.js'
 
-const getAll = (req, res) => res.status(200).json(fakeDB)
+const getAll = (req, res) =>
+  res.status(200).json({ user: req.loggedUser, games: fakeDB })
 
 const getById = (req, res) => {
   const id = String(req.params.id)
@@ -69,4 +70,3 @@ const update = (req, res) => {
 }
 
 export { getAll, getById, create, remove, update }
-
